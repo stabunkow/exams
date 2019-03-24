@@ -6,7 +6,6 @@
                 <small>{{exerciseBook.section.name}}</small>
                 <p>{{exerciseBook.description}}</p>
                 <p v-show="exerciseBook.questions_count">{{exerciseBook.questions_count}}道题</p>
-                <p v-show="exerciseBook.price">售价:{{exerciseBook.price}}元</p>
             </div>
         </div>
     </div>

@@ -15,3 +15,28 @@
 .home-jumpbotron {
   margin-bottom: 0;
 }
+
+// Fade-animiate
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+// Slide-animate
+.slide-left-enter, .slide-right-leave-active {
+  opacity: 0;
+  transform: translate(50px, 0);
+  transition-delay: .5s;
+}
+.slide-left-leave-active, .slide-right-enter {
+  opacity: 0;
+  transform: translate(-50px, 0);
+  transition-delay: .5s;
+}
+.slide-enter-active {
+  transition: all .3s ease;
+}
+.slide-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}

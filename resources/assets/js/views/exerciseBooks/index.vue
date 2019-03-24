@@ -16,8 +16,8 @@
                                     <small>{{section.name}}</small>
                                     <p>{{description}}</p>
                                     <div class="clearfix">
-                                        <span>{{price}} 元</span>
-                                        <button class="btn btn-primary float-right">购买</button>
+                                        <router-link class="btn-sm"
+                                                         :to="{name:'exerciseBookQuestions', params: { id: id } }">答题</router-link>
                                     </div>
                                 </div>
                             </div>
@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
+
 export default {
     data () {
         return {
@@ -61,23 +63,22 @@ export default {
         this.init()
     },
     methods: {
+        ...mapActions([
+            'getSubjectsIncludeSections',
+            'getExerciseBooks'
+        ]),
         async init () {
-            await Promise.all([this.getSubjectsWithSections(), this.getExerciseBooks()])
-        },
-        async getSubjectsWithSections () {
-            const subjects = await axios.get('/api/subjects?include=sections')
-            this.subjects = subjects.data
+            this.subjects = await this.getSubjectsIncludeSections()
             this.subjectsSlots[0].values = this.subjects.map(subject => subject.name)
             this.subjectsSlots[2].values = this.subjects[0].sections.map(section => section.name)
-        },
-        async getExerciseBooks () {
-            const exerciseBooks = await axios.get('/api/exercise_books')
-            this.exerciseBooks = exerciseBooks.data.data
+
+            const exerciseBooks = await this.getExerciseBooks()
+            this.exerciseBooks = exerciseBooks.data
         },
         onSlotsChange (picker, values) {
             if (this.subjects.length) {
-                let subject = _.find(this.subjects, { name: values[0] })
-                let sections = subject.sections.map(section => section.name)
+                const subject = _.find(this.subjects, { name: values[0] })
+                const sections = subject.sections.map(section => section.name)
                 picker.setSlotValues(1, sections)
                 this.section = values[1]
             }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserHasExerciseBookTable extends Migration
+class CreateUserFavoriteQuestionPivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateUserHasExerciseBookTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_has_exercise_book', function (Blueprint $table) {
+        Schema::create('user_favorite_question_pivot', function (Blueprint $table) {
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('exercise_book_id');
+            $table->unsignedInteger('question_id');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateUserHasExerciseBookTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_has_exercise_book');
+        Schema::dropIfExists('user_favorite_question_pivot');
     }
 }

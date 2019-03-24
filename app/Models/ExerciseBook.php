@@ -13,7 +13,7 @@ class ExerciseBook extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_has_exercise_book');
+        return $this->belongsToMany(User::class, 'user_exercise_book_pivot')->withTimestamps();
     }
 
     public function section()
@@ -23,8 +23,9 @@ class ExerciseBook extends Model
 
     public function hasBought()
     {
-        return \DB::table('user_has_exercise_book')
+        return \DB::table('user_exercise_book_pivot')
             ->where('exercise_book_id', $this->id)
-            ->where('user_id', auth()->id())->exists();
+            ->where('user_id', auth()->id())
+            ->exists();
     }
 }

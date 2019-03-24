@@ -29,19 +29,6 @@
                     <span class="carousel-control-next-icon"></span>
                 </a>
             </div>
-            <div class="jumbotron">
-                <div class="container">
-                    <h1>离研究生考试</h1>
-                    <h4><span class="display-1">{{ leftDays }}</span>天</h4>
-                </div>
-            </div>
-            <div class="jumbotron bg-info">
-                <div class="container">
-                    <h1 class="float-right">答题册</h1>
-                    <h4 class="clearfix"><span class="display-4 float-right">助你一战</span></h4>
-                    <h3 class="clearfix"><span class="display-1 float-right">GO</span></h3>
-                </div>
-            </div>
         </div>
     </div>
 </template>
@@ -57,13 +44,6 @@ export default {
     },
     created () {
         this.init()
-    },
-    computed: {
-        leftDays () {
-            const leftTime = new Date('2018-12-23') - Date.now()
-            const leftDays = Math.floor((leftTime / (24*3600*1000)))
-            return leftDays
-        }
     },
     methods: {
         ...mapActions(['getHeadlines']),

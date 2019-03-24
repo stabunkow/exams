@@ -3,7 +3,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="/">
-                    zhengzhi
+                    exams
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -13,12 +13,12 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li><router-link class="nav-link"
-                            :to="{name:'exerciseBooks.index'}">答题册</router-link></li>
+                            :to="{name:'exerciseBooks'}">答题册</router-link></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
+                    <!--<ul class="navbar-nav ml-auto">
+                        &lt;!&ndash; Authentication Links &ndash;&gt;
                         <li v-show="!name">
                             <router-link class="nav-link"
                                 :to="{name: 'login'}">登录</router-link>
@@ -33,12 +33,12 @@
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href=""
-                                   onclick="">
+                                   @click="clearAuthUser">
                                     登出
                                 </a>
                             </div>
                         </li>
-                    </ul>
+                    </ul>-->
                 </div>
             </div>
         </nav>
@@ -46,13 +46,18 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
     computed: {
         ...mapState({
             name: state => state.AuthUser.name
         })
+    },
+    methods: {
+        ...mapActions([
+            'clearAuthUser'
+        ])
     }
 }
 </script>

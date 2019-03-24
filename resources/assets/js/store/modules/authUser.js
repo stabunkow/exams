@@ -3,6 +3,8 @@ export default {
         authenticated: false,
         id: null,
         name: null,
-        email: null
+        email: null,
+        phone: null,
+        wallet: null
     }
 }

@@ -27,6 +27,14 @@ class ExerciseBooksController extends Controller
     public function show(ExerciseBook $exerciseBook)
     {
         $exerciseBook = $exerciseBook->load(['section', 'questions']);
+
+        if ($include = request('include')) {
+            if (in_array('questions', explode(',', $include))) {
+                // $this->authorize('update', $exerciseBook);
+                $exerciseBook->includeQuestions = true;
+            }
+        }
+
         return new ExerciseBookResource($exerciseBook);
     }
 }

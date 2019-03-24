@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\ExerciseBooks;
+namespace App\Http\Controllers\Api\ExerciseBooks\Questions;
 
 use App\Http\Resources\QuestionResource;
 use App\Models\ExerciseBook;

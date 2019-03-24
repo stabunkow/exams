@@ -30,7 +30,17 @@ class User extends Authenticatable implements JWTSubject
 
     public function exercise_books()
     {
-        return $this->belongsToMany(ExerciseBook::class, 'user_has_exercise_book')->withTimestamps();
+        return $this->belongsToMany(ExerciseBook::class, 'user_exercise_book_pivot')->withTimestamps();
+    }
+
+    public function wrong_questions()
+    {
+        return $this->belongsToMany(Question::class, 'user_wrong_question_pivot')->withTimestamps();
+    }
+
+    public function favorite_questions()
+    {
+        return $this->belongsToMany(Question::class, 'user_favorite_question_pivot')->withTimestamps();
     }
 
     public function getJWTIdentifier()

@@ -27,13 +27,13 @@ class QuestionsTableSeeder extends Seeder
                 $type = rand(1, 2);
                 $question->type = $type;
 
-                $selections = [
+                $options = [
                     $faker->sentence,
                     $faker->sentence,
                     $faker->sentence,
                     $faker->sentence
                 ];
-                $question->selections = json_encode($selections);
+                $question->options = json_encode($options);
 
                 if ($type === 1) {
                     $question->answer = 'A';

@@ -71,9 +71,9 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['login']),
+        ...mapActions(['createToken']),
         sendLoginForm () {
-            this.login({
+            this.createToken({
                 username: this.username,
                 password: this.password
             })

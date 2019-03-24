@@ -19,7 +19,7 @@ class CreateQuestionsTable extends Migration
             $table->unsignedTinyInteger('type')->unsigned();
             $table->string('questionable_type');
             $table->unsignedInteger('questionable_id');
-            $table->json('selections')->nullable();
+            $table->json('options')->nullable();
             $table->string('answer');
             $table->text('analyse');
             $table->timestamps();

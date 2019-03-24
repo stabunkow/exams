@@ -11,13 +11,6 @@ window.Vue = require('vue')
 import jwt from './helpers/jwt'
 window.jwt = jwt
 
-axios.interceptors.request.use(function (config) {
-    if (jwt.getToken()) {
-        config.headers['Authorization'] = 'Bearer ' + jwt.getToken()
-    }
-    return config
-}, (error) => Promise.reject(error))
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -29,12 +22,15 @@ import Vuex from 'vuex'
 import createStore from './store/store'
 import 'mint-ui/lib/style.css'
 import MintUI from 'mint-ui'
+import Octicon from 'vue-octicon'
+import 'vue-octicon/icons'
 
 import App from './app.vue'
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.use(MintUI)
+Vue.use(Octicon)
 
 const router = createRouter()
 const store = createStore()
